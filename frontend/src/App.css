@@ -1,0 +1,19 @@
+.vertical-divider {
+    display: inline-block;
+    width: 1px;       /* толщина линии */
+    height: 40px;     /* длина линии */
+    background-color: #0D99FF; /* цвет */
+}
+
+.horizontal-divider-main{
+    /* Подчеркивание IPHONE */
+
+position: absolute;
+width: 713px;
+height: 63.33px;
+left: calc(50% - 713px/2 + 0.5px);
+top: 473px;
+
+border: 15px solid #0D99FF;
+
+}

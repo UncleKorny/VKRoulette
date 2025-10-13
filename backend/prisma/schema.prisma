@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  balance   Int      @default(100)
+  spins     Spin[]
+}
+
+model Prize {
+  id          String   @id @default(cuid())
+  name        String
+  probability Int
+  value       Int
+  spins       Spin[]
+}
+
+model Spin {
+  id        String   @id @default(cuid())
+  userId    String
+  prizeId   String
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id])
+  Prize     Prize    @relation(fields: [prizeId], references: [id])
+}
